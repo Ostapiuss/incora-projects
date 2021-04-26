@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Route, Link } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { showInfo } from '../../redux/reducers/postReducer'
 import { request } from '../../api'
 
 export const UserList = () => {
@@ -7,6 +10,8 @@ export const UserList = () => {
   useEffect(() => {
     request().then(setListItems)
   }, [])
+
+  const dispatch = useDispatch()
 
   return (
     <table className="table">
@@ -27,7 +32,12 @@ export const UserList = () => {
             <td>{ item.email }</td>
             <td>{ item.phone }</td>
             <td>
-              <button className="button is-primary">
+              <button
+                className="button is-primary"
+                onClick={() => {
+                  dispatch(showInfo(item))
+                }}
+              >
                 Post
               </button>
             </td>

@@ -1,28 +1,24 @@
 import React from 'react';
-import { request } from './api';
-import { useState, useEffect } from 'react';
 import { UserList } from './components/UserList';
+import { UserDetail } from './components/UserDetail';
+import {Route, Switch } from 'react-router-dom';
 import './App.css';
 import 'bulma/css/bulma.css'
 
 export const App = () => {
-  const [test, setTest] = useState([]);
-  
-  useEffect(() => {
-    request().then(result => setTest(result))
-  }, [])
-
-
-  console.log(test);
 
   return (
     <div className="App">
       <h2>Hello Redux</h2>
 
-      <main className="main">
-        <UserList />
+      {/* <Switch>
+        <main className="main">
+          <Route path="/" component={UserList} exact />
+        </main>
+      </Switch> */}
 
-      </main>
+      <UserList />
+      <UserDetail />
     </div>
   );
 }

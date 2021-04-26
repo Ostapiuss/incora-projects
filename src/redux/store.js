@@ -1,8 +1,8 @@
 import { combineReducers, createStore } from 'redux';
-import { postReducer } from './reducers/postReducer';
+import postReducer from './reducers/postReducer';
 
 const reducer = combineReducers({
-  post: postReducer
+  post: postReducer,
 })
 
 const store = createStore(reducer);
